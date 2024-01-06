@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../../images/logo/logo.svg";
+import Logo from "../../images/logo/logo.png";
 import NavList from "../Nav/NavList";
 import { Link } from "react-router-dom";
 import LogoSide from "../../images/logo/logo-footer.svg";
@@ -238,7 +238,7 @@ function Navbar() {
                   </p>
                   <p className="text-[1.6rem] font-medium text-[#000000b1] hover:text-[#ff0336] cursor-pointer ease-in duration-200">
                     <i className="fa-solid fa-envelope text-[#ff0336]"></i>
-                    &nbsp; info@gymate.com
+                    &nbsp; info@arcfit.com
                   </p>
                 </div>
                 {/* follow us */}

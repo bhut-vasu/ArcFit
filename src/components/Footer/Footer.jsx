@@ -36,7 +36,7 @@ function Footer() {
               </div>
               <p className="text-[16px] font-medium text-[#646464]">
                 Privacy Policy | © {new Date().getFullYear()} Gymate <br />{" "}
-                Design with Sweat by Vasu Bhut
+                Design with Hardwork by Vasu Bhut
               </p>
             </div>
 
