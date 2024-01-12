@@ -2,7 +2,7 @@ import { useState } from "react";
 import Logo from "../../images/logo/logo.png";
 import NavList from "../Nav/NavList";
 import { Link } from "react-router-dom";
-import LogoSide from "../../images/logo/logo-footer.svg";
+import LogoSide from "../../images/logo/footer-logo.png";
 import SideImg1 from "../../images/sidebar/1.jpg";
 import SideImg2 from "../../images/sidebar/2.jpg";
 import SideImg3 from "../../images/sidebar/3.jpg";
@@ -56,7 +56,7 @@ function Navbar() {
   return (
     <>
       <nav
-        className={`flex flex-row bg-transparent items-center justify-between py-8 px-12  fixed top-0 left-0 right-0 w-full z-50 ${
+        className={`flex flex-row bg-transparent items-center justify-around  py-8 px-12  fixed top-0 left-0 right-0 w-full z-50 ${
           sticky ? "shadow-xl !bg-black" : ""
         }`}
       >
@@ -65,12 +65,14 @@ function Navbar() {
             src={Logo}
             alt="logo_img"
             onClick={goTop}
-            className="w-full h-auto"
+            className="w-[23%] h-auto min400:ml-8"
           />
         </Link>
+
         <div className="navlist-nav">
           <NavList />
         </div>
+
         <div className="flex items-center gap-10">
           <div className="flex gap-10">
             {/* mobile menu -------------- */}

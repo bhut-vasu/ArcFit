@@ -1,5 +1,6 @@
-const nodemailer = require("nodemailer");
 const express = require("express");
+const mongoose = require("mongoose");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 const cors = require("cors");
 const http = require("http");
@@ -11,12 +12,33 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(cors());
 
+// connecting database
+mongoose
+  .connect("mongodb+srv://admin:admin@cluster0.ge4y8ie.mongodb.net/?retryWrites=true&w=majority")
+  .then(() => {
+    console.log("Database Connected Successfully");
+  })
+  .catch(() => {
+    console.log("Error in Database Connectivity");
+  });
+
+
+var user = require("./Schema.js");
+
 app.get("/", async (req, res, next) => {
-  res.json("Hey There. You are on a server of fitness platform.");
+  res.json("Hey There. You are on a server of the world's best fitness platform.");
 });
 
 app.post("/", async (req, res, next) => {
+  const data = new user({
+    name: req.body.name,
+    email: req.body.email,
+    reason: req.body.reason,
+    remarks: req.body.remarks,
+  });
+
   try {
+    const result = await data.save();
 
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -50,6 +72,6 @@ app.post("/", async (req, res, next) => {
   }
 });
 
-app.listen(5077, () => {
-  console.log(`Server is running on`);
+app.listen(5071, () => {
+  console.log(`Server is running on 5071`);
 });

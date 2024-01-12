@@ -11,6 +11,7 @@ module.exports = {
       min540: { max: "540px" },
       min450: { max: "450px" },
       min375: { max: "375px" },
+      min400: { min: "375px" },
     },
   },
   plugins: [],
