@@ -13,4 +13,4 @@ const productschema = new mongoose.Schema({
     type: String,
   },
 });
-module.exports = mongoose.model("arcfitSchema", productschema);
+module.exports = mongoose.model("Arcfit", productschema);
