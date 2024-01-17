@@ -46,7 +46,7 @@ app.post("/", async (req, res, next) => {
       secure: true,
       auth: {
         user: "rajadipatidar227@gmail.com",
-        pass: "ilre donl ziku uhih",
+        pass: "vnpn jgjl ynpe qyaa",
       },
     });
 
