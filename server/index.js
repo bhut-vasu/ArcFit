@@ -57,7 +57,7 @@ app.post("/", async (req, res, next) => {
       text: `Email From {"${req.body.email}"}. Name is {"${req.body.name}"}. Message for query {"${req.body.reason}"} is {"${req.body.remarks}"}`,
     };
 
-    transporter.sendMail(mailOptions, (eri) => {
+    transporter.sendMail(mailOptions, (err) => {
       if (err) {
         console.log(err);
       } else {
