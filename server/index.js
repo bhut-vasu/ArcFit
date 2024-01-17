@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
-const cors = require("cors");
+// const cors = require("cors");
 const http = require("http");
 
 const app = express();
@@ -10,18 +10,18 @@ const app = express();
 const server = http.createServer(app);
 // app.use(cors({ origin: true }));
 app.use(express.json());
-app.use((req, res, next) => {
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      res.setHeader(
-        "Access-Control-Allow-Methods",
-        "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-      );
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-      if (req.method === "OPTIONS") {
-        return res.sendStatus(200);
-      }
-      next();
-    });
+// app.use((req, res, next) => {
+//       res.setHeader("Access-Control-Allow-Origin", "*");
+//       res.setHeader(
+//         "Access-Control-Allow-Methods",
+//         "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+//       );
+//       res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//       if (req.method === "OPTIONS") {
+//         return res.sendStatus(200);
+//       }
+//       next();
+//     });
 
 
 // connecting database
