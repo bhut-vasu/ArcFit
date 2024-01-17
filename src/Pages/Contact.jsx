@@ -26,7 +26,7 @@ const Contact = () => {
       return false;
     }
 
-    await fetch("http://localhost:5071/", {
+    await fetch("https://arcfit-server-5okeovt2t-vasu-bhuts-projects.vercel.app/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
