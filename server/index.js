@@ -2,20 +2,28 @@ const express = require("express");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
-const cors = require("cors");
-const http = require("http");
+// const cors = require("cors");
+// const http = require("http");
 
 const app = express();
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 app.use(express.json());
-app.use(
-  cors({
-    credentials: true,
-    origin: ["https://arcfit.vasubhut.com/"],
-    allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
-  })
-);
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: ["https://arcfit.vasubhut.com/"],
+//     allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
+//   })
+// );
+
+app.use((_req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+
+  next();
+});
+
 
 // connecting database
 mongoose
