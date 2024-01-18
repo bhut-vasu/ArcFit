@@ -2,31 +2,26 @@ const express = require("express");
 const mongoose = require("mongoose");
 const nodemailer = require("nodemailer");
 require("dotenv").config();
-// const cors = require("cors");
+const cors = require("cors");
 const http = require("http");
 
 const app = express();
 
 const server = http.createServer(app);
-// app.use(cors({ origin: true }));
 app.use(express.json());
-// app.use((req, res, next) => {
-//       res.setHeader("Access-Control-Allow-Origin", "*");
-//       res.setHeader(
-//         "Access-Control-Allow-Methods",
-//         "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-//       );
-//       res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//       if (req.method === "OPTIONS") {
-//         return res.sendStatus(200);
-//       }
-//       next();
-//     });
-
+app.use(
+  cors({
+    credentials: true,
+    origin: ["https://arcfit.vasubhut.com/"],
+    allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
+  })
+);
 
 // connecting database
 mongoose
-  .connect("mongodb+srv://admin:admin@cluster0.ge4y8ie.mongodb.net/?retryWrites=true&w=majority")
+  .connect(
+    "mongodb+srv://database:database@portfoliodatabase.qog6w.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Database Connected Successfully");
   })
@@ -34,11 +29,12 @@ mongoose
     console.log("Error in Database Connectivity");
   });
 
-
 var user = require("./Schema.js");
 
 app.get("/", async (req, res, next) => {
-  res.json("Hey There. You are on a server of the world's best fitness platform.");
+  res.json(
+    "Hey There. You are on a server of the world's best fitness platform."
+  );
 });
 
 app.post("/", async (req, res, next) => {
@@ -65,7 +61,7 @@ app.post("/", async (req, res, next) => {
     const mailOptions = {
       from: "rajadipatidar227@gmail.com",
       to: "vasubhut157@gmail.com",
-      subject: "ArcFit", 
+      subject: "ArcFit",
       text: `Email From {"${req.body.email}"}. Name is {"${req.body.name}"}. Message for query {"${req.body.reason}"} is {"${req.body.remarks}"}`,
     };
 
@@ -79,7 +75,7 @@ app.post("/", async (req, res, next) => {
 
     res.send({ user: true, data: result });
   } catch (e) {
-    console.log(e)
+    console.log(e);
     res.send({ user: false });
   }
 });
